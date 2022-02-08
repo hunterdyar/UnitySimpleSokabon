@@ -1,4 +1,4 @@
-# UnitySimpleSokabon
+# Simple Sokabon
 Simple Sokabon Game to demonstrate fundamental game programming patterns
 
 This project was seen in the following explainer videos. 
