@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: ddf5290abc0e8d440a22cddb4acc49ed
+guid: 710e99be1c01f34479eb137b38e5f57a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - layerSettings: {fileID: 11400000, guid: 418c560d4fc8a744393e59e16ae3d599, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -7,7 +7,8 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
 	private Stack<Command> _commands;
-
+	public static Action AfterTurnExecutedEvent;
+	public static Action AfterUndoEvent;
 	private void Awake()
 	{
 		_commands = new Stack<Command>();
@@ -17,6 +18,7 @@ public class TurnManager : MonoBehaviour
 	{
 		command.Execute();
 		_commands.Push(command);
+		AfterTurnExecutedEvent?.Invoke();
 	}
 
 	public void Undo()
@@ -25,6 +27,7 @@ public class TurnManager : MonoBehaviour
 		{
 			Command latest = _commands.Pop();
 			latest.Undo();
+			AfterUndoEvent?.Invoke();
 		}
 	}
 	
