@@ -5,15 +5,15 @@ namespace Sokabon
 {
 	public class LevelManager : MonoBehaviour
 	{
-		void Restart()
+		public void Restart()
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 
-		void GoToNextLevel()
+		public void GoToNextLevel()
 		{
 			int current = SceneManager.GetActiveScene().buildIndex;
-			int next = current++;
+			int next = current + 1;
 			int total = SceneManager.sceneCountInBuildSettings;
 			if (next >= total)
 			{
