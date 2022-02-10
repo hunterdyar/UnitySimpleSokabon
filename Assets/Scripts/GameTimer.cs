@@ -5,7 +5,7 @@ namespace Sokabon
 	public class GameTimer
 	{
 		private float _timer = 0;
-		public bool Running => _running;
+		public bool Running => _started && _running;//even if _running is true when we are not started, this should report false.
 		private bool _running = false;
 		public bool Started => _started;
 		private bool _started = false;
@@ -16,9 +16,9 @@ namespace Sokabon
 			_timer = 0;
 		}
 
-		public void SetRunning(bool running)
+		public void SetPaused(bool paused)
 		{
-			_running = running;
+			_running = !paused;
 		}
 		public void Pause()
 		{
@@ -28,6 +28,12 @@ namespace Sokabon
 		public void Unpause()
 		{
 			_running = true;
+		}
+
+		public void Stop()//cannot be resumed, must be restarted.
+		{
+			_started = false;
+			_running = false;
 		}
 		public string GetPrettyTime()
 		{
