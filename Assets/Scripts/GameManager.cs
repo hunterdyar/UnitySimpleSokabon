@@ -57,6 +57,5 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _timer.Tick();
-        
     }
 }

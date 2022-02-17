@@ -17,6 +17,11 @@ public class TurnManager : MonoBehaviour
 		_commands = new Stack<Command>();
 	}
 
+	private void Start()
+	{
+		TurnCountChanges.Invoke(_commands.Count);//Count is 0 on level load.
+	}
+
 	public void ExecuteCommand(Command command)
 	{
 		command.Execute();
