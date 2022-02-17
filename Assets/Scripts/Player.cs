@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Threading;
 using Sokabon.CommandSystem;
+using Sokabon.StateMachine;
 using UnityEngine;
 
 namespace Sokabon
 {
-	public class Player : MonoBehaviour
+	public class Player : StateChangeListener
 	{
 		private Block _block;
 		[SerializeField] private TurnManager _turnManager;
+		private bool _canMove = true;
 		private void Awake()
 		{
+			_canMove = true;
 			_block = GetComponent<Block>();
 			
 			//We have a dependency on TurnManager.
@@ -50,9 +53,25 @@ namespace Sokabon
 
 			return false;
 		}
-		
+
+		protected override void OnEnterEvent()
+		{
+			_canMove = true;
+		}
+
+		protected override void OnExitEvent()
+		{
+			_canMove = false;
+		}
+
 		private void Update()
 		{
+			if (!_canMove)
+			{
+				return;//cant move.
+			}
+			
+			
 			//Todo: Joystick support.
 			//Actual Todo: switch to new input system.
 			if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))

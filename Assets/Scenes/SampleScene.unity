@@ -1083,14 +1083,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1955324020317199447, guid: 800048870fccf2b4ebaf45bb84071800, type: 3}
-      propertyPath: _turnManager
-      value: 
-      objectReference: {fileID: 375578427}
-    - target: {fileID: 2268998925242706493, guid: 800048870fccf2b4ebaf45bb84071800, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3144111899543712682, guid: 800048870fccf2b4ebaf45bb84071800, type: 3}
       propertyPath: m_Name
       value: Managers

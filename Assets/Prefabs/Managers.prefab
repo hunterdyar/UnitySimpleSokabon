@@ -111,6 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710e99be1c01f34479eb137b38e5f57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machine: {fileID: 11400000, guid: 45b14241e7228ba49aacc9f7de18ca09, type: 2}
+  victoryState: {fileID: 11400000, guid: bf0bdab58f2479548bb9954888b8265d, type: 2}
+  gameplayState: {fileID: 11400000, guid: 955fb8d07600b25488dd6f753d063042, type: 2}
+  pauseState: {fileID: 11400000, guid: 8152fc5c5d9c81f4ba144df470567e44, type: 2}
 --- !u!1 &3144111899543712682
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3144111899543712683}
     m_Modifications:
+    - target: {fileID: 2527008615761310524, guid: 0fb21b29db53a41459ec18aa149db3e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3144111898432730627}
     - target: {fileID: 2906972020232196187, guid: 0fb21b29db53a41459ec18aa149db3e5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -390,6 +398,14 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 3144111898432730627}
+    - target: {fileID: 6161387930690559503, guid: 0fb21b29db53a41459ec18aa149db3e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3144111898432730627}
+    - target: {fileID: 6877241341808131759, guid: 0fb21b29db53a41459ec18aa149db3e5, type: 3}
+      propertyPath: _turnManager
+      value: 
+      objectReference: {fileID: 3144111900321352373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb21b29db53a41459ec18aa149db3e5, type: 3}
 --- !u!224 &7783849497358086819 stripped
