@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Sokabon.CommandSystem
 {
@@ -11,19 +12,19 @@ namespace Sokabon.CommandSystem
 			_subCommands = subCommands;
 		}
 
-		public override void Execute()
+		public override void Execute(Action onComplete)
 		{
 			foreach (Command c in _subCommands)
 			{
-				c.Execute();
+				c.Execute(onComplete);
 			}
 		}
 
-		public override void Undo()
+		public override void Undo(Action onComplete)
 		{
 			foreach (Command c in _subCommands)
 			{
-				c.Undo();
+				c.Undo(onComplete);
 			}
 		}
 	}

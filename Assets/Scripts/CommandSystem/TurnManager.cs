@@ -24,10 +24,9 @@ public class TurnManager : MonoBehaviour
 
 	public void ExecuteCommand(Command command)
 	{
-		command.Execute();
+		command.Execute(AfterTurnExecutedEvent);
 		_commands.Push(command);
 		TurnCountChanges?.Invoke(_commands.Count);
-		AfterTurnExecutedEvent?.Invoke();
 	}
 
 	public void Undo()
@@ -35,8 +34,7 @@ public class TurnManager : MonoBehaviour
 		if (_commands.Count > 0)
 		{
 			Command latest = _commands.Pop();
-			latest.Undo();
-			AfterUndoEvent?.Invoke();
+			latest.Undo(AfterUndoEvent);
 			TurnCountChanges?.Invoke(_commands.Count);
 		}
 	}

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf5290abc0e8d440a22cddb4acc49ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSettings: {fileID: 11400000, guid: c184963bbd747444f87547c118be3bfa, type: 2}
   layerSettings: {fileID: 11400000, guid: 418c560d4fc8a744393e59e16ae3d599, type: 2}
 --- !u!61 &8391423207400783676
 BoxCollider2D:

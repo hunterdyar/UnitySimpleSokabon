@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Sokabon.CommandSystem
 {
@@ -13,14 +14,14 @@ namespace Sokabon.CommandSystem
 			_direction = direction;
 		}
 
-		public override void Execute()
+		public override void Execute(Action onComplete)
 		{
-			_block.MoveInDirection(_direction);
+			_block.MoveInDirection(_direction, false, onComplete);
 		}
 
-		public override void Undo()
+		public override void Undo(Action onComplete)
 		{
-			_block.MoveInDirection(-_direction);
+			_block.MoveInDirection(-_direction, true, onComplete);
 		}
 	}
 }

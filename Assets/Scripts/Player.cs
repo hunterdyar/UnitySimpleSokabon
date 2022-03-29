@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Sokabon.CommandSystem;
 using Sokabon.StateMachine;
@@ -11,8 +13,10 @@ namespace Sokabon
 		private Block _block;
 		[SerializeField] private TurnManager _turnManager;
 		private bool _canMove = true;
+		private Queue<Vector2Int> _movementQueue;
 		private void Awake()
 		{
+			_movementQueue = new Queue<Vector2Int>();
 			_canMove = true;
 			_block = GetComponent<Block>();
 			
@@ -76,23 +80,33 @@ namespace Sokabon
 			//Actual Todo: switch to new input system.
 			if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
 			{
-				TryMove(Vector2Int.up);
+				_movementQueue.Enqueue(Vector2Int.up);
 			}
 			else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
 			{
-				TryMove(Vector2Int.down);
+				_movementQueue.Enqueue(Vector2Int.down);
 			}
 			else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
 			{
-				TryMove(Vector2Int.left);
+				_movementQueue.Enqueue(Vector2Int.left);
 			}
 			else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
 			{
-				TryMove(Vector2Int.right);
+				_movementQueue.Enqueue(Vector2Int.right);
 			}else if (Input.GetKeyDown(KeyCode.Z))
 			{
 				_turnManager.Undo();
 			}
+
+			if (!_block.IsAnimating && _movementQueue.Count > 0)
+			{
+				Vector2Int dir = _movementQueue.Dequeue();
+				if (!TryMove(dir))
+				{
+					_movementQueue.Clear();
+				}
+			}
+			
 		}
 	}
 }
