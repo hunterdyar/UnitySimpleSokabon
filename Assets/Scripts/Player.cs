@@ -74,10 +74,8 @@ namespace Sokabon
 			{
 				return;//cant move.
 			}
-			
-			
-			//Todo: Joystick support.
-			//Actual Todo: switch to new input system.
+
+			//Todo: Joystick support. Switch to new input system.
 			if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
 			{
 				_movementQueue.Enqueue(Vector2Int.up);

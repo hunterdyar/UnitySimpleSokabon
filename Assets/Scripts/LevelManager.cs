@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public string nextLevel;
+    public static int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex;
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

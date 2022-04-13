@@ -38,4 +38,9 @@ public class TurnManager : MonoBehaviour
 			TurnCountChanges?.Invoke(_commands.Count);
 		}
 	}
+
+	public int GetTurnCount()
+	{
+		return _commands.Count;
+	}
 }

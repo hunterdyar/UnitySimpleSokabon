@@ -35,26 +35,31 @@ namespace Sokabon
 			_started = false;
 			_running = false;
 		}
+		
 		public string GetPrettyTime()
 		{
-			int minutes = Mathf.FloorToInt(_timer / 60f);
-			int seconds = Mathf.FloorToInt(_timer % 60f);//% is the "modulo" operator: remainder after division.
+			return PrettyTime(_timer);
+			//If you really want to do stuff with time, don't even bother keeping a float yourself. Hold this information as a TimeSpan object that C# has might have been easier....
+		}
+		//Making this static means we can use it even if out time does not come from this object, and things will look consistent. Useful for displaying a high score.
+		public static string PrettyTime(float time)
+		{
+			int minutes = Mathf.FloorToInt(time / 60f);
+			int seconds = Mathf.FloorToInt(time % 60f); //% is the "modulo" operator: remainder after division.
 
 			//String formatting is fun and easy! It's not actually, but out of scope for this video.
 			//A few tricks here that make this unreadable.  First, the $"words{variable}" syntax,
 			//that is "string interpolation", which is a bad name but a useful feature.
 			//https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
-			
+
 			//Next is the D2 part. That is an argument that is being passed into the ToString function that the integer class has.
 			//It tells the integer how to convert to a string. As a currency, a decimal, scientific notation, etc.
-			
+
 			//D means Decimal, which will just print the string as a whole number
 			//2 is the minimum number of digits, adding leading 0's as needed. It will look like 00:09 and not 0:9.
 			//https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
 
 			return $"{minutes:D2}:{seconds:D2}";
-			
-			//If you really want to do stuff with time, don't even bother keeping a float yourself. Hold this information as a TimeSpan object that C# has might have been easier....
 		}
 		
 		/// <summary>
@@ -73,6 +78,11 @@ namespace Sokabon
 			{
 				_timer += Time.deltaTime;
 			}
+		}
+
+		public float GetTime()
+		{
+			return _timer;
 		}
 	}
 }

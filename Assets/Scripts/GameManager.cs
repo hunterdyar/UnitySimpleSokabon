@@ -6,7 +6,6 @@ using Sokabon;
 using Sokabon.StateMachine;
 using UnityEngine;
 
-//Todo: Manage game state.
 public class GameManager : MonoBehaviour
 {
     [Header("State Machine Config")] [SerializeField]
@@ -42,7 +41,7 @@ public class GameManager : MonoBehaviour
         TurnManager.AfterTurnExecutedEvent -= AfterTurnExecutedOrUndo;
         TurnManager.AfterUndoEvent -= AfterTurnExecutedOrUndo;
     }
-
+    
     public GameTimer GetTimer()
     {
         return _timer;
@@ -77,11 +76,28 @@ public class GameManager : MonoBehaviour
             Debug.Log("We win!");
             _timer.Stop();
             machine.SetCurrentState(victoryState);
+            HighScoreManager.Instance.OnVictory(LevelManager.CurrentLevelIndex,_timer);
         }
     }
 
     private void Update()
     {
         _timer.Tick();
+    }
+    
+    //Helper functions
+    public bool IsCurrentStateGameplay()
+    {
+        return machine.IsCurrentState(gameplayState);
+    }
+
+    public bool IsCurrentStateVictory()
+    {
+        return machine.IsCurrentState(victoryState);
+    }
+
+    public bool IsPaused()
+    {
+        return machine.IsCurrentState(pauseState);
     }
 }

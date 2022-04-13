@@ -27,5 +27,10 @@ namespace Sokabon.StateMachine
 			_currentState = newState;
 			_currentState.OnEnter();
 		}
+
+		public bool IsCurrentState(State state)
+		{
+			return _currentState == state;
+		}
 	}
 }
